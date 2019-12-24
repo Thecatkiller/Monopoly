@@ -1,0 +1,7 @@
+.breadcrumb {
+  margin: 10px 0;
+}
+
+.breadcrumb__lista {
+  display: inline-block;
+}

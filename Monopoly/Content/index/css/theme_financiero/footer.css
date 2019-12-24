@@ -1,0 +1,13 @@
+.footer__container {
+  float: left;
+  width: 100%;
+  background-color: #FFD369;
+  height: 85px;
+  left: 14px;
+  border-radius: 85px;
+  top: 0px;
+  left: 0;
+  padding-right: 3px;
+  z-index: 2;
+  position: relative;
+}

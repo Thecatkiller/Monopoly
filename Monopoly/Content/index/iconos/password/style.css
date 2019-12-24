@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?d5npwp');
+  src:  url('fonts/icomoon.eot?d5npwp#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?d5npwp') format('truetype'),
+    url('fonts/icomoon.woff?d5npwp') format('woff'),
+    url('fonts/icomoon.svg?d5npwp#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-clave-ojo:before {
+  content: "\e111";
+}
+.icon-clave-ojo2:before {
+  content: "\e112";
+}
+

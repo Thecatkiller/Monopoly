@@ -1,0 +1,35 @@
+/*** ESTILOS FIANANCIERO PAGINA DE INICIO***/
+.heroOtros {
+  background: url(../img/bg-hero-otros.jpg) center top no-repeat;
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+}
+
+@media (min-width: 768px) {
+  .heroOtros {
+    height: 470px;
+  }
+}
+
+@media (min-width: 992px) {
+  .heroOtros {
+    height: 570px;
+  }
+}
+
+.otros__itemSubTitle {
+  color: red;
+  font-size: 14px;
+  line-height: 15px;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 992px) {
+  .otros__itemSubTitle {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,14 @@
+﻿@media only screen and (max-width: 991px) {
+    body {
+        background-color: #006CD8;
+    }
+
+    .close__banca {
+        display: none;
+        padding-top: 10px;
+    }
+
+    .bancaInternet__title {
+        padding-top: 25px;
+    }
+}

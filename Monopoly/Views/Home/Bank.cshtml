@@ -1,0 +1,228 @@
+﻿@using Entity;
+@model List<PlayerByGame>
+@{
+    Layout = "~/Views/Shared/_LayoutInside.cshtml";
+}
+
+<style>
+    .container_destinatarios {
+        height: 188px;
+        background-color: white !important;
+    }
+
+        .container_destinatarios.mCustomScrollbar {
+            height: auto !important;
+        }
+
+    .centerExito {
+        margin-bottom: 10px;
+        margin-top: -11px;
+    }
+
+    .centerError {
+        color: #e8446c;
+        margin-bottom: 10px;
+        margin-top: -11px;
+    }
+
+    .demo-transfer {
+        color: #cacaca !important;
+    }
+</style>
+
+<!-- CONTAINER CAMPONENTES INICIO-->
+<div class="container_inner">
+    <form id="transferForm" action="javascript:void(0);" class="flujoTransferencia" method="POST" autocomplete="off">
+
+        <input id="hidden_origin_account" name="pOriginAccount" type="hidden" value="" />
+        <input id="hidden_destination_account" name="pDestinationAccount" type="hidden" value="" />
+        <input id="hidden_ammount" type="hidden" name="pAmmount" value="0" />
+
+        <input id="hdn_monto" type="hidden" value="0" />
+        <input id="shortcut_SET" type="hidden" value='false' />
+
+        <div class="row">
+            <div class="col-md-12 titulo_page">
+                <h2>Transferencias entre cuentas</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 titulo_transferencias">
+                <p>Paso1: Detalle de transferencia</p>
+            </div>
+            <div class="col-md-6 col-xs-12 pasos_transferencias">
+                <div class="container_step">
+                    <small><strong>Paso 1 de 3</strong></small>
+                    <div class="container_pasos">
+                        <span class="active">1</span>
+                        <span>2</span>
+                        <span>3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row transferencias_cuentas">
+            <!-- Cuenta origen -->
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <p class="titulo_transferencias">Cuenta origen</p>
+
+                <div class="container_box" id="BoxOrigen">
+
+                    <div class="container_box--cuentas">
+                        <ul class="listado_cuentas_origenes" id="ulCuentaOrigen">
+                            @{ int i = 0; }
+                            @if (Model != null)
+                            {
+                                foreach (var obj in Model)
+                                {
+                                    <li name="own_account_@i" id="account.Number" class="">
+                                        <p>
+                                            <input value="@obj.Player.Alias" onclick="javascript: SelectOriginAccount(this);" name="origen" type="radio" id="own_account_@i">
+                                            <label for="own_account_@i">
+                                                <span>
+                                                    <strong style="overflow: hidden;text-overflow: ellipsis;">@obj.Player.Alias</strong>
+                                                    <small style="margin-bottom: 0px;">Disponible</small>
+                                                </span>
+                                                <span>
+                                                    <small class="colortext-indigo"></small>
+                                                    <small class="colortext-indigo">@obj.CurrentMoney</small>
+                                                    <strong class="delete msg_insuficient" id="strong_account.Number"></strong>
+                                                </span>
+                                            </label>
+                                        </p>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <!-- fin de Cuenta origen -->
+            <!-- Cuenta destino -->
+
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <p class="titulo_transferencias titulo_demotransfer2 demo-transfer">Cuenta destino</p>
+                <div class="container_box" id="DestinationAccount">
+                    <div class="box_demotransfer2" style="width: 100%;position: absolute; top: 0; left: 0; opacity:0.3;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
+                    </div>
+                    <div class="container_box-destinos">
+
+                        <div class="panel-group container_box--cuentas" id="accordion">
+                            <div class="panel panel-default header_accordion cuentasHeader">
+
+                                <div id="collapse1" class="panel-collapse collapse detalle_colapsable" style="width: 100%;">
+                                    <div class="panel-body panel_Destinos" style="width: 100%;">
+                                        @*Aqui se cargan las cuentas destino Propias (Internas y Externas) -- Vista Parcial OwnDestinationAccount*@
+                                        <ul class="container_destinatarios listado_accordion" style="width: 100%;height: auto !important;">
+
+
+                                            <li id="owndestAcco_0">
+                                                <p>
+                                                    <input data-issamebank="1" value="" data-currency="123" data-name="Model.Shortcut.DestinationNumber" name="destino" type="radio" id="destino3">
+                                                    <label for="destino3">
+                                                        <span>
+                                                            <strong style="overflow: hidden; text-overflow: ellipsis;">@@Alias</strong>
+                                                        </span>
+                                                        <span>
+                                                            <small style="text-align: right; font-family: Prelo-Bold;color: #10265c;font-weight: bold; float: right;">Model.Shortcut.DestinationNumber</small>
+
+                                                        </span>
+                                                    </label>
+                                                </p>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin de Cuenta destino -->
+            <!-- Cuenta Importe y descripción -->
+
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <p id="DisplaceDestino" class="titulo_transferencias titulo_demotransfer3 demo-transfer">Importe y descripción</p>
+                <div class="container_box">
+                    <!-- demo3 transfer -->
+                    <div class="box_demotransfer3" style="position: absolute; top: 0; left: 0; display: block;width: 100%;float: left;padding: 10px 20px; opacity:0.4;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;">
+                    </div>
+
+                    <!-- fin de plantilla de referencia -->
+                    <div class="transferencias_inmediatas">
+                        <header id="headerTIN">
+                            <div class="container_transfer_costo" style="padding: 10px 0; width: auto;">
+                                <p class="font-query" style="margin: 0;">Transferencia inmediata</p>
+                                <small class="font-query" style="color:#858585;font-style: italic;">Horario 8:30am a 4:00pm</small>
+                            </div>
+                            <div style="float: right;margin-right: 10px;">
+                                <p class="radio_transferencias--small" style="margin-right: 0;">
+                                    <input name="Transfer_Inmediatas" type="radio" id="inmediata_si" value="true" />
+                                    <label for="inmediata_si">
+                                        Si
+                                    </label>
+                                </p>
+                                <p class="radio_transferencias--small" style="margin-right: 0;">
+                                    <input name="Transfer_Inmediatas" type="radio" id="inmediata_no" value="false" />
+                                    <label for="inmediata_no">
+                                        No
+                                    </label>
+                                </p>
+                            </div>
+                        </header>
+
+                        <div class="container_form" id="container_formTIN">
+
+                            <div class="input-field container_form-valores" data-select="select" style="margin-top: if;">
+                                <select id="pOperationCurrency" name="pOperationCurrency">
+                                    @*TODO Monedas de base de datos*@
+                                    <option value="604" data-value="604" selected>S/.</option>
+                                    <option value="840" data-value="840" selected>USD</option>
+                                </select>
+                            </div>
+
+                            @*TODO Ver el teclado *@
+
+                            <input id="monto" name="pAmmount" type="text" data-text="campo_texto" class="importe_input input__hack importe_input_desktop solonumeros" placeholder="Ingresa importe" maxlength="12" />
+
+                            <input oninvalid="setCustomValidity(' ')" data-position="bottom" data-tooltip="Email inválido" id="email" type="email" name="email" data-text="campo_texto" class="input_email_1" maxlength="50" placeholder="Email destinatario (opcional)" autocomplete="off" />
+
+                            <div id="tooltipmonto" class="tooltip bs-tooltip-top" style="display: none; opacity: 1;right: 20px;top: 54px;">
+                                <div class="arrow" style="width: 0;height: 0;border-left: 7px solid transparent;border-right: 7px solid transparent;border-bottom: 10px solid black;position: absolute;top: -6px;right: 5px;"></div>
+                                <div id="errorMessageMonto" class="tooltip-inner" style="font-size: 10px;max-width: 300px;padding: 5px 5px;"></div>
+                            </div>
+
+                            <textarea id="descripcion" name="descripcion" data-mensaje="mensaje-transferencia" maxlength="100" placeholder="Descripción (opcional) Máx 100 caracteres. Aparecerá en estado de cuenta mensual y en el mensaje al destinatario"></textarea>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Fin de Cuenta Importe y descripción -->
+        </div>
+        <div class="row">
+            <div class="col-md-12 content_buttons reverse-order" style="justify-content: space-between;">
+                <a href="@Url.Content("~/Setting/ManageOperation/#cuentas1")" class="administracion-frecuentes m20"></a>
+                <button id="btnContinueTransfer" data-btn="boton-continuar" type="submit" class="boton-general continuar__boton waves-effect no-with--radio">Continuar <i class="icon-flecha-right arrow_right_cuentas"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- FIN DE CONTAINER CAMPONENTES INICIO-->
+<!--- modales -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        @*Aqui se carga las cuentas de terceros registradas en el SQL (vista parcial ExternalDestinationAccount)*@
+        <div class="modal-content Contenido-Modal" id="ExternalDestinationAccount">
+
+        </div>
+    </div>
+</div>
+<!--- Fin de modales -->
+<!--- modales -->
+
+@Scripts.Render("~/bundles/Material")

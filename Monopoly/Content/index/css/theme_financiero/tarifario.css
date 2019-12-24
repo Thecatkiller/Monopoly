@@ -1,0 +1,163 @@
+.tarifario .contenido__title {
+  margin-top: 70px;
+  font-size: 26px; }
+  @media (min-width: 768px) {
+    .tarifario .contenido__title {
+      margin-top: 30px; } }
+
+.tarifario .tarjetasDetalle__social {
+  margin-top: 40px;
+  overflow: hidden; }
+  @media (min-width: 768px) {
+    .tarifario .tarjetasDetalle__social {
+      float: right; } }
+  .tarifario .tarjetasDetalle__social span {
+    width: auto;
+    top: 0; }
+
+.tarifario .contenido__contenedor {
+  margin-bottom: 0; }
+
+.contenido__container {
+  background: white;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-bottom: 35px;
+  overflow: hidden; }
+  .contenido__container.billetera {
+    background: transparent; }
+
+.contenido__hero {
+  padding: 30px;
+  height: 200px;
+  display: table;
+  width: 100%;
+  background-position: top right -250px;
+  background-repeat: no-repeat;
+  background-color: #1D6BB4; }
+  @media (min-width: 768px) {
+    .contenido__hero {
+      background-position: top right; } }
+  .contenido__hero.tarifario-bg {
+    background-image: url(../img/fot-tarifario.jpg); }
+  .contenido__hero.venta-bg {
+    background-image: url(../img/fot-bienes-adjudicados.jpg); }
+  .contenido__hero.banca-bg {
+    background-image: url(../img/fot-banca-telefonica.jpg); }
+  .contenido__hero.cajeros-bg {
+    background-image: url(../img/fot-cajeros-corresponsales.jpg); }
+  .contenido__hero.canales-bg {
+    background-image: url(../img/fot-canales-atencion.jpg); }
+  .contenido__hero.billetera-bg {
+    background-image: url(../img/fot-billetera-movil.jpg); }
+  .contenido__hero.internet-bg {
+    background-image: url(../img/fot-banca-internet.jpg); }
+
+.contenido__heroIcon {
+  display: none;
+  position: relative;
+  top: -21px;
+  margin-right: 15px; }
+  @media (min-width: 768px) {
+    .contenido__heroIcon {
+      display: inline-block; } }
+
+.contenido__heroTitle {
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+  font-size: 25px;
+  font-family: 'latolight';
+  line-height: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); }
+  @media (min-width: 768px) {
+    .contenido__heroTitle--pd {
+      padding-top: 20px; } }
+  .contenido__heroTitle p {
+    display: inline-block;
+    margin: 0; }
+    .contenido__heroTitle p span {
+      font-family: 'latomedium'; }
+
+.contenido__info {
+  padding: 30px;
+  overflow: auto; }
+
+.contenido__txt {
+  color: #646472;
+  font-size: 16px;
+  margin-bottom: 20px; }
+
+.ejecutiva {
+  padding-left: 30px;
+  padding-right: 50px;
+  margin-bottom: 30px;
+  border-top: solid 1px #CCC;
+  padding-top: 30px; }
+  @media (min-width: 992px) {
+    .ejecutiva {
+      height: 310px;
+      margin-bottom: 0;
+      padding-top: 0;
+      border-top: none;
+      padding-left: 15px;
+      text-align: left;
+      background: url(../img/img-ejecutiva.png) right -40px bottom no-repeat; } }
+  @media (min-width: 992px) and (min-width: 1200px) {
+    .ejecutiva {
+      background: url(../img/img-ejecutiva.png) right bottom no-repeat; } }
+  .ejecutiva__txt {
+    font-size: 18px;
+    color: #646472;
+    line-height: 20px;
+    margin-top: 20px; }
+  .ejecutiva__phone {
+    font-size: 18px;
+    font-family: 'latobold';
+    margin-top: 10px;
+    color: #646472; }
+    .ejecutiva__phone span {
+      font-size: 14px;
+      display: block;
+      font-family: 'latolight'; }
+
+.billetera__description {
+  margin-bottom: 30px;
+  position: relative; }
+  @media (min-width: 768px) {
+    .billetera__description {
+      border-right: solid 1px #CCC; } }
+  .billetera__description:last-of-type {
+    border-right: none; }
+  .billetera__description-title {
+    color: #005DAC;
+    font-size: 25px;
+    margin-bottom: 20px;
+    font-family: 'latolight';
+    display: inline-block; }
+  .billetera__description-txt {
+    color: #646472;
+    font-size: 16px; }
+  .billetera__description-logo {
+    width: 82px;
+    float: right;
+    margin-top: 5px; }
+  .billetera__description-phone {
+    color: #646472;
+    font-size: 16px; }
+    .billetera__description-phone span {
+      color: #0078DE;
+      font-size: 24px; }
+
+#accordionBim .icon-cruz {
+  float: right; }
+
+#accordionBim .panel-title a {
+  font-family: "latolight";
+  padding-left: 0; }
+  @media (min-width: 501px) {
+    #accordionBim .panel-title a {
+      padding-left: 30px; } }
+
+#accordionBim .panel-body {
+  padding: 20px 10px 20px 10px; }

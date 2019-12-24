@@ -1,30 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Bussines.Service;
+using Bussines.Service.Impl;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Monopoly.Controllers
 {
     public class HomeController : Controller
     {
+
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public async Task<string> GetPlayers(string gameName)
         {
-            ViewBag.Message = "Your application description page.";
+            GameService service = new GameServiceImpl();
+            var result = await service.GetPlayersByGame(gameName);
 
-            return View();
+            return JsonConvert.SerializeObject(result);
         }
 
-        public ActionResult Contact()
+        public async Task<ActionResult> Bank(string gameName)
         {
-            ViewBag.Message = "Your contact page.";
+            GameService service = new GameServiceImpl();
 
-            return View();
+            return View(await service.GetPlayersByGame(gameName));
         }
     }
 }
